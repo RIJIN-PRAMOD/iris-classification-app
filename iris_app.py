@@ -9,7 +9,6 @@ from sklearn.model_selection import train_test_split
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.metrics import accuracy_score, confusion_matrix
 
-# ===== Load and Prepare Data =====
 iris_data = load_iris()
 df = pd.DataFrame(data=iris_data.data, columns=iris_data.feature_names)
 df['species'] = pd.Categorical.from_codes(iris_data.target, iris_data.target_names)
@@ -25,7 +24,7 @@ model.fit(X_train, y_train)
 st.title("🌸 Iris Flower Classification App")
 st.write("Enter the measurements of the flower to predict its species.")
 
-# Input sliders
+
 sepal_length = st.slider("Sepal Length (cm)", 4.0, 8.0, 5.1)
 sepal_width = st.slider("Sepal Width (cm)", 2.0, 4.5, 3.5)
 petal_length = st.slider("Petal Length (cm)", 1.0, 7.0, 1.4)
@@ -57,3 +56,4 @@ with st.expander("Show Data Exploration"):
     st.write("### Pair Plot")
     fig2 = sns.pairplot(df, hue='species', markers=["o", "s", "D"])
     st.pyplot(fig2)
+
